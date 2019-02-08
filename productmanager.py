@@ -15,7 +15,7 @@ class Window(QtWidgets.QWidget):
         self.setTheme() ## set app. theme.
         self.setDisableButtons() ## set all buttons and line edits disable until user connect to db correctly.
         self.createProductTable() ## db connection and creating table.
-        self.listProducts()
+        self.listProducts() ## set all product into the combo box.
         
     def createProductTable(self):
         ## Database connection / creating table.
