@@ -80,17 +80,18 @@ class Window(QtWidgets.QWidget):
         
     def init_ui(self):
         
-        bar = QtWidgets.QMenuBar()
-        file_ = bar.addMenu('File')
-        about = bar.addMenu('About')
+        bar = QtWidgets.QMenuBar()   # define widget.
+        file_ = bar.addMenu('File')     # add menu.
+        about = bar.addMenu('About')    # other menu.
         
-        goGitub_page = about.addAction('Author')
-        openInfoText = about.addAction('Application')
-        close_app = file_.addAction('Exit')
+        goGitub_page = about.addAction('Author')    # Add an action into the About menu.
+        openInfoText = about.addAction('Application')   # another action.
+        close_app = file_.addAction('Exit')  # Exit action.
         
-        goGitub_page.triggered.connect(self.browseMyGithubPage)
+        goGitub_page.triggered.connect(self.browseMyGithubPage) 
         openInfoText.triggered.connect(self.openAppGuide)
         close_app.triggered.connect(self.closeApp)
+        ## Running functions.
         
         ## Message box for warnings.
         self.msg_box = QtWidgets.QMessageBox()        
