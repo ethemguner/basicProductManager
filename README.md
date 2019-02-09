@@ -11,16 +11,23 @@ You can change them with sqlite3 db browser. You can see id and pass at administ
 ## FOR ADD PRODUCT:
 
 1.Enter all information about your product into the inputs below ADD PRODUCT.
+
 2. Click 'Add Product to Database'
+
 3. Do not enter same serial numbers.
+
 4. Enter all information, otherwise you will get an error.
 
 ## FOR EDIT PRODUCT:
 
 1. Select the product which you want to edit.
+
 2. Click 'Edit Product', you will see all information at inputs.
+
 3. Change/edit information about product.
+
 4. Click 'Save Edits'
+
 5. Enter all information, otherwise you will get an error.
 
 ## DELETE PRODUCT:
