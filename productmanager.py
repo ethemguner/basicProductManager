@@ -49,7 +49,7 @@ class Window(QtWidgets.QWidget):
                  self.msg_box.setWindowTitle("Failure")
                  self.msg_box.exec_()
                  self.setDisableButtons()
-                 ## Giving an error and running setEnableButton. 
+                 ## Giving an error and running setDisableButton. 
         else:
             self.db_status_label.setStyleSheet("QLabel {color: #00FF49;}")
             self.db_status_label.setText("connected successfuly")
@@ -74,7 +74,7 @@ class Window(QtWidgets.QWidget):
             self.product_cb.setEnabled(True)
             self.saveButton.setEnabled(True)
             ## Set green db status label color.
-            ## Clear admin id and pass line edits.
+            ## set disable admin id and admin pass line edits with text.
             ## Giving a message box, saying that connection successful.
             ## Set all line edits and buttons enable.
         
@@ -142,7 +142,7 @@ class Window(QtWidgets.QWidget):
         self.editProductsButton = QtWidgets.QPushButton("Edit Product")
         self.deleteProductButton = QtWidgets.QPushButton("Delete Product")
         self.saveButton = QtWidgets.QPushButton("Save Edits")
-        ## Combobox and its settings.
+        ## Combobox which includes products list.
         self.product_cb = QtWidgets.QComboBox()
         
         ## Vertical layout boxes.
@@ -414,14 +414,13 @@ class Window(QtWidgets.QWidget):
         
         ## If all inputs are fill.
         if self.isEverythingOK == True:
-            
             ## At this point, we will control same product inputs. We don't want same product in our database.
             ## At least, we want different serial numbers. So, we control serial numbers.
+            
             self.cursor.execute("SELECT serial_number FROM myProducts")
             self.fetch_sn = self.cursor.fetchall()  ## they're in here.
             fetch_sn_length = len(self.fetch_sn)  ## length of serial_number column.
             
-
             self.isSameProduct = bool  ## a boolean variable, we will define it later.
             
             if fetch_sn_length == 0:
@@ -430,15 +429,14 @@ class Window(QtWidgets.QWidget):
                 for k in range(0,fetch_sn_length):
                     self.fetch_sn = list(map(str, self.fetch_sn))
                     serial_numbers = self.fetch_sn[k].replace(",","").replace("(","").replace(")","").replace("'","")
-                    print(fetch_sn_length)
-                    
+        
                     if serial_numbers == self.productSerial_lineedit.text():
                         self.isSameProduct = True
                     else:
                         self.isSameProduct = False
                 
             if self.isSameProduct == False:
-                ## We will take current date time and put it into the our database while product add.
+                ## We will take current date time and put it into the our database when an operation happen.
                 self.now = datetime.datetime.now()
                 self.today = self.now.strftime("%d/%m/%y")
                 self.hour_minute = self.now.strftime("%H:%M")
@@ -447,7 +445,8 @@ class Window(QtWidgets.QWidget):
                 self.cursor.execute("INSERT INTO myProducts VALUES(?,?,?,?,?,?,?)", (sn, name, model, info, price, amount, dt))
                 self.dbConn.commit() ## insert operation done.
                 
-                self.listProducts()
+                self.listProducts() ## update combobox product list.
+                
             else:
                 self.msg_box.setIcon(QtWidgets.QMessageBox.Warning)
                 self.msg_box.setText("Cannot add same product. Please enter different serial number.")
@@ -462,7 +461,7 @@ class Window(QtWidgets.QWidget):
             self.msg_box.setText("Fill all inputs please.")
             self.msg_box.setWindowTitle("An error occured.")
             self.msg_box.exec_()
-            ## If there is any empty inputs.
+            ## If there is any empty inputs giving an error.
             
     def deleteProcess(self):
         
