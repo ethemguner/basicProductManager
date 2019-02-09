@@ -32,10 +32,13 @@ You can change them with sqlite3 db browser. You can see id and pass at administ
 
 ## DELETE PRODUCT:
 
-1-> If you delete the product, you cannot bring it again.
-2-> Below EDIT PRODUCTS, select the product which you want to delete.
-3-> Click 'Delete Product'
-4-> Then click 'Yes'
+1. If you delete the product, you cannot bring it again.
+
+2. Below EDIT PRODUCTS, select the product which you want to delete.
+
+3. Click 'Delete Product'
+
+4. Then click 'Yes'
 
 
 Github: https://github.com/ethemguner/basicProductManager
