@@ -18,8 +18,6 @@ class Window(QtWidgets.QWidget):
         self.createProductTable() ## db connection and creating table.
         self.listProducts() ## set all products in database to combobox.
         
-        
-        
     def createProductTable(self):
         ## Database connection / creating table.
         self.dbConn = sqlite3.connect("products.db")
