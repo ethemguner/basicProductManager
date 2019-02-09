@@ -227,9 +227,6 @@ class Window(QtWidgets.QWidget):
         self.dbConn = sqlite3.connect("products.db")
         self.cursor = self.dbConn.cursor()
 
-        self.dbConn = sqlite3.connect("products.db")
-        self.cursor = self.dbConn.cursor()
-        
         self.cursor.execute("SELECT name FROM myProducts")
         self.productList = self.cursor.fetchall()
         self.productLength = len(self.productList)
