@@ -81,12 +81,12 @@ class Window(QtWidgets.QWidget):
     def init_ui(self):
         
         bar = QtWidgets.QMenuBar()
-        file = bar.addMenu('File')
+        file_ = bar.addMenu('File')
         about = bar.addMenu('About')
         
         goGitub_page = about.addAction('Author')
         openInfoText = about.addAction('Application')
-        close_app = file.addAction('Exit')
+        close_app = file_.addAction('Exit')
         
         goGitub_page.triggered.connect(self.browseMyGithubPage)
         openInfoText.triggered.connect(self.openAppGuide)
